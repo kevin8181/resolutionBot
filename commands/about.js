@@ -1,5 +1,5 @@
 //jshint esversion:8
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -30,6 +30,11 @@ module.exports = {
 		const targetUser = interaction.options.getUser('user');
 		const name = interaction.options.getString('name');
 		const category = interaction.options.getString('category');
+
+		interaction.guild.channels.create({
+			name: name,
+			type: ChannelType.GuildText,
+		});
 
 		await interaction.reply(`You asked to create a ${category} channel called "${name}" for the user ${targetUser}.`);
 	},
