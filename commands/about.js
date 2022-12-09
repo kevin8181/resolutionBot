@@ -42,6 +42,7 @@ module.exports = {
 						PermissionFlagsBits.ManageChannel,
 						PermissionFlagsBits.ManageWebhooks,
 						PermissionFlagsBits.ManageThreads,
+						// PermissionFlagsBits.CreatePublicThreads,
 					]
 				}
 			],
