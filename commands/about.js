@@ -36,7 +36,7 @@ module.exports = {
 			type: ChannelType.GuildText,
 			permissionOverwrites: [
 				{
-					id: user,
+					id: targetUser,
 					allow: [
 						PermissionsFlagsBits.ManageMessages
 					]
