@@ -1,5 +1,5 @@
 //jshint esversion:8
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -23,7 +23,8 @@ module.exports = {
 					{ name: 'Bi-monthly', value: 'bi-monthly' },
 					{ name: 'Monthly', value: 'monthly' },
 				)
-		),
+		)
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageServer),
 	async execute(interaction) {
 
 		await interaction.reply("response");
