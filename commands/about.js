@@ -24,9 +24,13 @@ module.exports = {
 					{ name: 'Monthly', value: 'monthly' },
 				)
 		)
-		.setDefaultMemberPermissions(PermissionFlagsBits.ManageServer),
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageServer), //this does not work, fix later
 	async execute(interaction) {
 
-		await interaction.reply("response");
+		const targetUser = interaction.options.getUser('user');
+		const name = interaction.options.getString('name');
+		const category = interaction.options.getString('category');
+
+		await interaction.reply(`You asked to create a ${category} channel called "${name}" for the user ${targetUser}.`);
 	},
 };
