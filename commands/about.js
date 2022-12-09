@@ -38,7 +38,10 @@ module.exports = {
 				{
 					id: targetUser,
 					allow: [
-						PermissionFlagsBits.ManageMessages
+						PermissionFlagsBits.ManageMessages,
+						PermissionFlagsBits.ManageChannel,
+						PermissionFlagsBits.ManageWebhooks,
+						PermissionFlagsBits.ManageThreads,
 					]
 				}
 			],
