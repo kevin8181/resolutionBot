@@ -34,6 +34,14 @@ module.exports = {
 		interaction.guild.channels.create({
 			name: name,
 			type: ChannelType.GuildText,
+			permissionOverwrites: [
+				{
+					id: user,
+					allow: [
+						PermissionsFlagsBits.ManageMessages
+					]
+				}
+			],
 		});
 
 		await interaction.reply(`You asked to create a ${category} channel called "${name}" for the user ${targetUser}.`);
