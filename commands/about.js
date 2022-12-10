@@ -43,7 +43,10 @@ module.exports = {
 			permissionOverwrites: [
 				{
 					id: targetUser,
-					allow: permissions,
+					allow: [
+						PermissionsBitField.Flags.ManageChannels,
+						PermissionsBitField.Flags.ManageMessages,
+					],
 				},
 			],
 		});
