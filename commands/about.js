@@ -32,9 +32,10 @@ module.exports = {
 		const category = interaction.options.getString('category');
 
 		const flags = [
-			PermissionsBitField.Flags.ManageChannel,
+			PermissionsBitField.Flags.ManageChannels,
 			PermissionsBitField.Flags.ManageMessages,
 		];
+		const permissions = new PermissionsBitField(flags)
 
 		interaction.guild.channels.create({
 			name: name,
@@ -42,7 +43,7 @@ module.exports = {
 			permissionOverwrites: [
 				{
 					id: targetUser,
-					allow: [new PermissionsBitField(flags)],
+					allow: permissions,
 				},
 			],
 		});
