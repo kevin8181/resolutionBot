@@ -31,10 +31,6 @@ module.exports = {
 		const name = interaction.options.getString('name');
 		const category = interaction.options.getString('category');
 
-		const permissions = new PermissionsBitField([
-			PermissionsBitField.Flags.ManageMessages,
-			PermissionsBitField.Flags.ManageChannel,
-		]);
 
 		interaction.guild.channels.create({
 			name: name,
@@ -42,8 +38,12 @@ module.exports = {
 			permissionOverwrites: [
 				{
 					id: targetUser,
-					allow: [permissions],
-				}
+					allow: PermissionsBitField.Flags.ManageChannel,
+				},
+				{
+					id: targetUser,
+					allow: PermissionsBitField.Flags.ManageMessages,
+				},
 			],
 		});
 
