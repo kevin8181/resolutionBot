@@ -1,5 +1,5 @@
 //jshint esversion:8
-const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType, PermissionsBitField } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -31,18 +31,18 @@ module.exports = {
 		const name = interaction.options.getString('name');
 		const category = interaction.options.getString('category');
 
+		const permissions = new PermissionsBitField([
+			PermissionsBitField.Flags.ManageMessages,
+			PermissionsBitField.Flags.ManageChannel,
+		]);
+
 		interaction.guild.channels.create({
 			name: name,
 			type: ChannelType.GuildText,
 			permissionOverwrites: [
 				{
 					id: targetUser,
-					allow: [
-						PermissionFlagsBits.ManageMessages + PermissionFlagsBits.ManageChannel
-						// PermissionFlagsBits.ManageWebhooks,
-						// PermissionFlagsBits.ManageThreads,
-						// PermissionFlagsBits.CreatePublicThreads,
-					]
+					allow: permissions,
 				}
 			],
 		});
