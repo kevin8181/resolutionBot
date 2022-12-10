@@ -24,7 +24,7 @@ module.exports = {
 					{ name: 'Monthly', value: 'monthly' },
 				)
 		)
-		.setDefaultMemberPermissions(PermissionFlagsBits.ManageServer), //this does not work, fix later
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild),
 	async execute(interaction) {
 
 		const targetUser = interaction.options.getUser('user');
