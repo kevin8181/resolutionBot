@@ -20,7 +20,7 @@ module.exports = {
 				.addChoices(
 					{ name: 'Daily', value: 'daily' },
 					{ name: 'Weekly', value: 'weekly' },
-					{ name: 'Bi-monthly', value: 'bi-monthly' },
+					{ name: 'Bi-monthly', value: 'bimonthly' },
 					{ name: 'Monthly', value: 'monthly' },
 				)
 		)
@@ -31,9 +31,18 @@ module.exports = {
 		const name = interaction.options.getString('name');
 		const category = interaction.options.getString('category');
 
+		const categories = {
+			daily: "926982790891860008",
+			weekly: "663430643799293964",
+			bimonthly: "662078509853966348",
+			monthly: "794755536235003904",
+		}
+		const categoryID = categories[category];
+
 		interaction.guild.channels.create({
 			name: name,
 			type: ChannelType.GuildText,
+			parent: categoryID,
 			permissionOverwrites: [
 				{
 					id: targetUser,
