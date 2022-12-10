@@ -42,7 +42,7 @@ module.exports = {
 			permissionOverwrites: [
 				{
 					id: targetUser,
-					allow: permissions,
+					allow: [permissions],
 				}
 			],
 		});
