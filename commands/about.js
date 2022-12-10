@@ -31,12 +31,6 @@ module.exports = {
 		const name = interaction.options.getString('name');
 		const category = interaction.options.getString('category');
 
-		const flags = [
-			PermissionsBitField.Flags.ManageChannels,
-			PermissionsBitField.Flags.ManageMessages,
-		];
-		const permissions = new PermissionsBitField(flags)
-
 		interaction.guild.channels.create({
 			name: name,
 			type: ChannelType.GuildText,
@@ -46,6 +40,9 @@ module.exports = {
 					allow: [
 						PermissionsBitField.Flags.ManageChannels,
 						PermissionsBitField.Flags.ManageMessages,
+						PermissionsBitField.Flags.ManageWebhooks,
+						PermissionsBitField.Flags.ManageThreads,
+						PermissionsBitField.Flags.CreatePublicThreads,
 					],
 				},
 			],
